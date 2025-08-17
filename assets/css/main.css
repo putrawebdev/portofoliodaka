@@ -66,6 +66,41 @@ ol li {
 .dark_bg {
   background: #000;
 }
+/* Fix untuk menu mobile */
+/* Fix untuk navbar mobile */
+.navbar {
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar-collapse {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #1a1a2e;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+    
+    .dark_bg_menu .navbar-collapse {
+        background: #1a1a2e;
+    }
+    
+    .navbar-collapse.collapsing,
+    .navbar-collapse.show {
+        display: block !important;
+        visibility: visible !important;
+    }
+}
 /*START PRELOADER DESIGN*/
 .preloader {
   position: fixed;
@@ -219,7 +254,7 @@ ol li {
 .hero-heading {
   font-size: 48px;
   font-weight: 700;
-  color: #fff;
+  color: #3e3e3e;
   text-transform: capitalize;
   line-height: 70px;
   letter-spacing: 0.1rem;
@@ -227,7 +262,7 @@ ol li {
 .hero-sub-heading {
   font-size: 20px;
   font-weight: 400;
-  color: #e6e6e6;
+  color: #3e3e3e;
   line-height: 45px;
   letter-spacing: 0.1rem;
 }
@@ -401,7 +436,7 @@ a.back-to-top:focus {
     display: none;
   }
   .bg-faded {
-    background: #fff;
+    background: #ffffff;
     animation: fadeInDown 1s both 0.2s;
   }
 }
@@ -414,12 +449,13 @@ a.back-to-top:focus {
 }
 
 .dark_bg_menu .navbar-nav .nav-link {
-  color: #fff;
+  color: #ffffff;
 }
 @media only screen and (max-width: 768px) {
   .navbar-light .navbar-nav .nav-link {
     color: #333;
   }
+
 }
 @media only screen and (max-width: 480px) {
   .navbar-light .navbar-nav .nav-link {
@@ -485,12 +521,12 @@ a.back-to-top:focus {
   -webkit-animation: fadeInDown 800ms;
   animation: fadeInDown 800ms;
   border-radius: 0px;
-  background-color: #000;
+  background-color: #000000;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 @media only screen and (max-width: 768px) {
   .navbar-fixed {
-    background: #fff;
+    background: #000000;
   }
   .navbar-fixed.navbar-light .navbar-nav .nav-link {
     color: #333;
@@ -871,6 +907,11 @@ Start FunFacts CSS
 /* ==========================================================================
 09. Start Blog Area
 ========================================================================== */
+
+.color-white{
+  color: #fff;
+}
+
 @media only screen and (max-width: 480px) {
   .single_blog {
     margin-bottom: 30px;
@@ -944,6 +985,11 @@ Start FunFacts CSS
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 70px;
+}
+.carouselsaya {
+  width: 100%;
+  height: 100%;
 }
 .skill{
   margin-top: 100px;
