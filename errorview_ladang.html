@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo Tidak Tersedia | Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .demo-error-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .demo-error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            z-index: 2;
+        }
+        
+        .demo-error-container::after {
+            content: '';
+            position: absolute;
+            top: -300px;
+            right: -300px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 219, 222, 0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .demo-header {
+            margin-bottom: 30px;
+        }
+        
+        .demo-icon {
+            font-size: 110px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+        }
+        
+        .demo-title {
+            font-size: 52px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .demo-subtitle {
+            font-size: 24px;
+            color: #b0b0d0;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .demo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .demo-message {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 4px solid #00dbde;
+        }
+        
+        .demo-message h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #00dbde;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .demo-message p {
+            line-height: 1.6;
+            color: #d0d0e7;
+            margin-bottom: 15px;
+        }
+        
+        .demo-reasons {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 4px solid #fc00ff;
+        }
+        
+        .demo-reasons h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #fc00ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reason-list {
+            list-style: none;
+        }
+        
+        .reason-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .reason-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .reason-list i {
+            color: #00dbde;
+            width: 20px;
+        }
+        
+        .demo-alternatives {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(0, 219, 222, 0.2);
+        }
+        
+        .demo-alternatives h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .alternative-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .alt-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-align: center;
+        }
+        
+        .alt-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 219, 222, 0.1);
+        }
+        
+        .alt-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #00dbde;
+        }
+        
+        .alt-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .alt-desc {
+            font-size: 14px;
+            color: #b0b0d0;
+        }
+        
+        .demo-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .demo-btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            border: none;
+            min-width: 220px;
+        }
+        
+        .demo-btn-primary {
+            background: linear-gradient(90deg, #00dbde, #0099ff);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 219, 222, 0.3);
+        }
+        
+        .demo-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 219, 222, 0.4);
+        }
+        
+        .demo-btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 2px solid #fc00ff;
+        }
+        
+        .demo-btn-secondary:hover {
+            background: rgba(252, 0, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .demo-btn-ghost {
+            background: transparent;
+            color: #b0b0d0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .demo-btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .demo-footer {
+            margin-top: 40px;
+            color: #8888aa;
+            font-size: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .demo-footer a {
+            color: #00dbde;
+            text-decoration: none;
+        }
+        
+        .demo-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .demo-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        .floating-window {
+            position: absolute;
+            width: 200px;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 219, 222, 0.2);
+            border-radius: 8px;
+            top: 15%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+            z-index: -1;
+        }
+        
+        .floating-window::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: 20px;
+            background: rgba(0, 219, 222, 0.1);
+            border-radius: 4px;
+        }
+        
+        .floating-window::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 8px;
+            right: 8px;
+            height: 60px;
+            background: rgba(252, 0, 255, 0.05);
+            border-radius: 4px;
+        }
+        
+        .floating-window:nth-child(2) {
+            top: 70%;
+            left: auto;
+            right: 8%;
+            animation: float 20s infinite ease-in-out reverse;
+            width: 150px;
+            height: 100px;
+        }
+        
+        @media (max-width: 992px) {
+            .demo-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .demo-title {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .demo-error-container {
+                padding: 30px 20px;
+            }
+            
+            .demo-title {
+                font-size: 36px;
+            }
+            
+            .demo-subtitle {
+                font-size: 20px;
+            }
+            
+            .demo-btn {
+                min-width: 100%;
+                padding: 16px 25px;
+            }
+            
+            .demo-actions {
+                flex-direction: column;
+            }
+            
+            .alternative-items {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .alt-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .floating-window {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-error-container">
+        <div class="demo-particles" id="particles"></div>
+        <div class="floating-window"></div>
+        <div class="floating-window"></div>
+        
+        <div class="demo-header">
+            <div class="demo-icon">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <h1 class="demo-title">LIVE DEMO TIDAK TERSEDIA</h1>
+            <p class="demo-subtitle">Project ini tidak dapat di-hosting untuk demo online</p>
+        </div>
+        
+        <div class="demo-content">
+            <div class="demo-message">
+                <h3><i class="fas fa-info-circle"></i> Mengapa Demo Tidak Tersedia?</h3>
+                <p>Project ini memiliki karakteristik khusus yang membuatnya tidak dapat di-hosting untuk demo online. Beberapa project memerlukan environment khusus, database server, atau konfigurasi yang kompleks yang tidak kompatibel dengan hosting web standar.</p>
+                <p>Ini adalah situasi umum untuk project yang melibatkan backend kompleks, database lokal, atau teknologi spesifik yang memerlukan environment khusus untuk berjalan dengan benar.</p>
+            </div>
+            
+            <div class="demo-reasons">
+                <h3><i class="fas fa-exclamation-triangle"></i> Alasan Umum:</h3>
+                <ul class="reason-list">
+                    <li><i class="fas fa-server"></i> Memerlukan backend server khusus</li>
+                    <li><i class="fas fa-database"></i> Menggunakan database lokal/offline</li>
+                    <li><i class="fas fa-code"></i> Teknologi stack yang tidak didukung hosting umum</li>
+                    <li><i class="fas fa-shield-alt"></i> Masalah keamanan dan akses data</li>
+                    <li><i class="fas fa-cogs"></i> Konfigurasi environment yang kompleks</li>
+                    <li><i class="fas fa-file-contract"></i> Batasan lisensi atau hak cipta</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="demo-alternatives">
+            <h3>Alternatif untuk Melihat Project Ini</h3>
+            <div class="alternative-items">
+                <a href="https://youtu.be/8mG2vx9IPdk?si=jW_j96dYBX_oETL7">
+                    <div class="alt-item">
+                        <div class="alt-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="alt-title">Video Demo</div>
+                        <div class="alt-desc">Tonton rekaman demo project yang dijalankan lokal</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="demo-actions">
+            <button id="backToPortfolio" class="demo-btn demo-btn-primary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Portofolio
+            </button>
+
+            <a href="https://www.instagram.com/putraaactr_?igsh=am8yN3l1ZGlvMWlv">
+                <button id="requestDemo" class="demo-btn demo-btn-secondary">
+                    <i class="fas fa-desktop"></i> Minta Demo Pribadi
+                </button>
+            </a>
+            
+                <button id="viewCode" class="demo-btn demo-btn-ghost">
+                    <i class="fab fa-github"></i> Lihat Kode di GitHub
+                </button>
+        </div>
+        
+        <div class="demo-footer">
+            <p>Jika Anda adalah recruiter atau klien potensial, saya dapat memberikan demo langsung via Zoom atau menunjukkan rekaman video dari project ini. <a href="#" id="contactLink">Hubungi saya untuk detail lebih lanjut</a>.</p>
+            <p style="margin-top: 10px;">Error Code: DEMO_NOT_HOSTED | Status: Project requires local environment</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk membuat partikel background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Ukuran acak
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posisi acak
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Warna acak dengan gradien
+                const hue = Math.random() * 60 + 180; // Warna biru-ungu
+                particle.style.background = `radial-gradient(circle, hsla(${hue}, 100%, 70%, 0.3) 0%, transparent 70%)`;
+                
+                // Animasi acak
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `float ${duration}s infinite ease-in-out ${delay}s, pulse ${duration / 2}s infinite ease-in-out`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Fungsi untuk kembali ke portofolio
+        document.getElementById('backToPortfolio').addEventListener('click', function() {
+            // Coba kembali ke halaman sebelumnya
+            if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                // Redirect ke homepage portofolio
+                window.location.href = '/';
+            }
+        });
+        
+        // Fungsi untuk meminta demo pribadi
+        document.getElementById('requestDemo').addEventListener('click', function() {
+            // const email = 'email@portofolio.com'; // Ganti dengan email Anda
+            // const subject = 'Permintaan Demo Project Portofolio';
+            // const body = `Halo, saya tertarik dengan project di portofolio Anda yang tidak memiliki Live Demo. Bisakah kita mengatur sesi demo langsung atau Anda membagikan rekaman videonya?\n\nProject yang diminati: [Sebutkan project yang diminati]\n\nSalam,`;
+            
+            // window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+        
+        // Fungsi untuk melihat kode di GitHub
+        document.getElementById('viewCode').addEventListener('click', function() {
+            // Bisa diarahkan ke GitHub atau halaman alternatif
+            // Jika tidak ada kode di GitHub, tampilkan pesan
+            const hasGitHub = true; // Ganti dengan kondisi apakah ada kode di GitHub
+            
+            if (hasGitHub) {
+                window.open('https://github.com/putrawebdev/LaDang_app', '_blank');
+            } else {
+                // Jika tidak ada GitHub, arahkan ke halaman error GitHub yang sudah dibuat sebelumnya
+                alert('Kode sumber untuk project ini juga belum diupload ke GitHub. Silakan hubungi saya untuk informasi lebih lanjut.');
+            }
+        });
+        
+        // Link kontak di footer
+        document.getElementById('contactLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            // const email = 'email@portofolio.com'; // Ganti dengan email Anda
+            // window.location.href = `mailto:${email}?subject=Kontak Portofolio - Live Demo`;
+        });
+        
+        // Animasi untuk ikon utama
+        const demoIcon = document.querySelector('.demo-icon');
+        demoIcon.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1) rotate(5deg)';
+            this.style.transition = 'transform 0.5s ease';
+        });
+        
+        demoIcon.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+        
+        // Efek hover untuk alasan
+        const reasonItems = document.querySelectorAll('.reason-list li');
+        reasonItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.transition = 'transform 0.3s ease';
+                this.style.background = 'rgba(0, 219, 222, 0.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+                this.style.background = 'transparent';
+            });
+        });
+        
+        // Inisialisasi partikel saat halaman dimuat
+        window.addEventListener('load', function() {
+            createParticles();
+            
+            // Efek muncul bertahap untuk konten
+            const contentElements = document.querySelectorAll('.demo-message, .demo-reasons, .demo-alternatives');
+            contentElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
+        });
+        
+        // Tambahkan efek keyboard untuk aksesibilitas
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('backToPortfolio').click();
+            }
+        });
+    </script>
+</body>
+</html>

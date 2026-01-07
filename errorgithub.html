@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Belum Tersedia | Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .error-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(120, 119, 198, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .error-icon {
+            font-size: 100px;
+            color: #ff4757;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+        
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #dfe4ea;
+        }
+        
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            border-left: 5px solid #ff4757;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .error-message i {
+            color: #ffa502;
+            margin-right: 10px;
+        }
+        
+        .github-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+            font-size: 18px;
+        }
+        
+        .github-info i {
+            color: #f1f2f6;
+            font-size: 24px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            border: none;
+            min-width: 200px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #3742fa, #5352ed);
+            color: white;
+            box-shadow: 0 5px 15px rgba(55, 66, 250, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(55, 66, 250, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #dfe4ea;
+            border: 2px solid #3742fa;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(55, 66, 250, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .error-code {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #a4b0be;
+            opacity: 0.7;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+            animation: float 20s infinite linear;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            bottom: 10%;
+            right: 5%;
+            animation: float 25s infinite linear reverse;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            right: 10%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 22px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .btn {
+                min-width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <h1>ERROR 404</h1>
+        <h2>Project GitHub Tidak Ditemukan</h2>
+        
+        <div class="github-info">
+            <i class="fab fa-github"></i>
+            <span>Repositori ini belum diupload ke GitHub</span>
+        </div>
+        
+        <div class="error-message">
+            <p><i class="fas fa-info-circle"></i> Maaf, project yang Anda cari belum tersedia di GitHub. Ini mungkin karena:</p>
+            <ul style="margin-left: 30px; margin-top: 10px;">
+                <li>Project masih dalam pengembangan</li>
+                <li>Belum diupload ke repositori GitHub</li>
+                <li>Link GitHub belum diperbarui</li>
+                <li>Project bersifat privat atau internal</li>
+            </ul>
+        </div>
+        
+        <div class="action-buttons">
+            <button id="backBtn" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Portofolio
+            </button>
+            <a href="https://www.instagram.com/putraaactr_?igsh=am8yN3l1ZGlvMWlv">
+                <button id="contactBtn" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Hubungi Saya
+                </button>
+            </a>
+        </div>
+        
+        <div class="error-code">
+            Error: GitHub repository not found | Status: Project belum diupload
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk kembali ke halaman portofolio
+        document.getElementById('backBtn').addEventListener('click', function() {
+            // Coba kembali ke halaman sebelumnya, jika tidak ada maka redirect ke home
+            if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                window.location.href = '/'; // Ganti dengan URL portofolio Anda
+            }
+        });
+        
+        // Fungsi untuk menghubungi (contoh: buka email)
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            // const email = 'example@portfolio.com'; // Ganti dengan email Anda
+            // window.location.href = `mailto:${email}?subject=Permintaan Akses Project GitHub&body=Halo, saya tertarik dengan project yang ada di portofolio Anda. Bisakah Anda membagikan kodenya?`;
+        });
+        
+        // Animasi tambahan untuk elemen error
+        const errorIcon = document.querySelector('.error-icon');
+        errorIcon.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2) rotate(10deg)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        errorIcon.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+        
+        // Efek ketik untuk pesan error
+        const errorText = document.querySelector('.error-message p');
+        const originalText = errorText.textContent;
+        errorText.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                errorText.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 30);
+            }
+        }
+        
+        // Mulai efek ketik setelah halaman dimuat
+        window.addEventListener('load', function() {
+            setTimeout(typeWriter, 1000);
+        });
+        
+        // Tambahkan konfirmasi jika user mencoba keluar dari halaman
+        window.addEventListener('beforeunload', function(e) {
+            // Opsional: Tampilkan pesan konfirmasi
+            // e.preventDefault();
+            // e.returnValue = '';
+        });
+    </script>
+</body>
+</html>

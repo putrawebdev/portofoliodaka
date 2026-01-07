@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300i,400,400i,500,600,700,800" rel="stylesheet">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" >	
+		
+		<!--Favicon for this site -->
+		<link rel="icon" href="assets/img/p.jpg"/>		
+		
+		<!-- Fonts -->
+		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css">
+		
+		<!-- Icon -->
+		<link rel="stylesheet" type="text/css" href="assets/fonts/simple-line-icons.css">
+		
+		<!-- Slicknav -->
+		<link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+		
+		<!-- Owl-carousel -->
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/owl.theme.default.min.css">
+		
+		<!-- Nivo Lightbox -->
+		<link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css" >
+		
+		<!-- Text-animated -->
+		<link rel="stylesheet" type="text/css" href="assets/css/animated-headline.css" >
+		
+		<!-- Normalize -->
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+		
+		<!-- Animate -->
+		<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+		
+		<!-- Main Style -->
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		
+		<!-- Responsive Style -->
+		<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">					
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
