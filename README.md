@@ -1,6 +1,2 @@
-# Demo 
->>
-
-![Screenshot](example.png)
 
 
